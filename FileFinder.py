@@ -1,5 +1,4 @@
 import os
-import subprocess
 def find_files(drives, f):
     print ('Searching, wait please :)')
     find_files = []
