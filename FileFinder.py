@@ -21,8 +21,7 @@ async def find_all_files(path, f):
 
 print('Write your request, I try to find them :) ')
 file_search = input()
-letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-drives = ['{0}:'.format(d) for d in letters if os.path.exists('{0}:'.format(d))]
+drives = [os.getenv("SystemDrive")]
 if platform == "win32":
     for element in drives:
         drives = element+'\\'
