@@ -1,7 +1,9 @@
 import os
+import asyncio
+from sys import platform
 
 
-def find_all_files(path, f):
+async def find_all_files(path, f):
     print('Searching, wait please :)')
     find_files = []
     if not path == []:
@@ -21,14 +23,14 @@ print('Write your request, I try to find them :) ')
 file_search = input()
 letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 drives = ['{0}:'.format(d) for d in letters if os.path.exists('{0}:'.format(d))]
-for element in drives:
-    drives = element+'\\'
-find_all_files(drives, file_search)
-
-
-
-
-
-
-
-
+if platform == "win32":
+    for element in drives:
+        drives = element+'\\'
+elif platform == "darwin":
+    for element in drives:
+        drives = element+'\\'
+else:
+    for element in drives:
+        drives = element+'/'
+if __name__ == '__main__':
+    asyncio.run(find_all_files(drives, file_search))
