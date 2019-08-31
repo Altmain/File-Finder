@@ -8,8 +8,7 @@ async def find_all_files(path, f):
     find_files = []
     if not path == []:
         for root, dirs, files in os.walk(path):
-            find_files += [os.path.join(root, name) for name in files if name.startswith(f) or name.endswith(f)
-                           or f == '__main__']
+            find_files += [os.path.join(root, name) for name in files if name.startswith(f) or name.endswith(f)]
         if not find_files:
             print('Sorry, but you do''not have files with this name. Try to make another request :)')
         else:
@@ -22,10 +21,7 @@ async def find_all_files(path, f):
 print('Write your request, I try to find them :) ')
 file_search = input()
 drives = [os.getenv("SystemDrive")]
-if platform == "win32":
-    for element in drives:
-        drives = element+'\\'
-elif platform == "darwin":
+if platform == "win32" or platform == "darwin":
     for element in drives:
         drives = element+'\\'
 else:
